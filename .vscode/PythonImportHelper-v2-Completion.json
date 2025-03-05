@@ -75,11 +75,19 @@
         "documentation": {}
     },
     {
+        "label": "MainPage",
+        "importPath": "pages.main_page",
+        "description": "pages.main_page",
+        "isExtraImport": true,
+        "detail": "pages.main_page",
+        "documentation": {}
+    },
+    {
         "label": "Base",
         "kind": 6,
         "importPath": "base.base_class",
         "description": "base.base_class",
-        "peekOfCode": "class Base:\n    \"\"\"Базовый класс, который содержит универсальные методы\"\"\"\n    def __init__(self, driver):\n        self.driver = driver\n    \"\"\" Метод получает текущий URL \"\"\"\n    def get_current_url(self):\n        current_url = self.driver.current_url\n        print(f\"Текущий URL - {current_url}\")\n        return current_url\n    def get_element(self, wait_time: int, log_info: str, locator: str):",
+        "peekOfCode": "class Base:\n    \"\"\"Базовый класс, который содержит универсальные методы\"\"\"\n    def __init__(self, driver):\n        self.driver = driver\n    \"\"\" Метод получает текущий URL \"\"\"\n    def get_current_url(self):\n        current_url = self.driver.current_url\n        print(f\"Текущий URL - {current_url}\")\n        return current_url\n    \"\"\" Метод получения элемента по локатору \"\"\"",
         "detail": "base.base_class",
         "documentation": {}
     },
@@ -95,10 +103,10 @@
     {
         "label": "MainPage",
         "kind": 6,
-        "importPath": "pages.base_page",
-        "description": "pages.base_page",
-        "peekOfCode": "class MainPage(Base):\n    \"\"\"Класс главной страницы\"\"\"\n    # Данные\n    main_page_url = \"https://tyumen.blizko.ru/\"\n    # Локаторы\n    pass_locator = \"EC.element_to_be_clickable((By.ID, self.password)\"\n    # Действия\n    # Методы",
-        "detail": "pages.base_page",
+        "importPath": "pages.main_page",
+        "description": "pages.main_page",
+        "peekOfCode": "class MainPage(Base):\n    \"\"\"Класс главной страницы\"\"\"\n    # Данные\n    main_page_url = \"https://tyumen.blizko.ru/\"\n    # Локаторы\n    pass_locator = \"EC.element_to_be_clickable((By.ID, self.password)\"\n    # Действия\n    # Методы\n    def go_to_base_url(self):\n        self.driver.get(self.main_page_url)",
+        "detail": "pages.main_page",
         "documentation": {}
     },
     {
@@ -106,7 +114,7 @@
         "kind": 2,
         "importPath": "tests.test_open_main_page",
         "description": "tests.test_open_main_page",
-        "peekOfCode": "def test_open_main_page():\n    # Открытие главной страницы интернетмагазина \n    with webdriver.Chrome() as driver:",
+        "peekOfCode": "def test_open_main_page():\n    # Открытие главной страницы интернетмагазина\n    with webdriver.Chrome() as driver:\n        mp = MainPage(driver)\n        mp.go_to_base_url()",
         "detail": "tests.test_open_main_page",
         "documentation": {}
     }

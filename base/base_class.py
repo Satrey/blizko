@@ -20,6 +20,8 @@ class Base:
         print(f"Текущий URL - {current_url}")
         return current_url
 
+    """ Метод получения элемента по локатору """
+
     def get_element(self, wait_time: int, log_info: str, locator: str):
         print(log_info)
         return WebDriverWait(self.driver, wait_time).until(locator)

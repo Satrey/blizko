@@ -20,3 +20,7 @@ class MainPage(Base):
     # Действия
 
     # Методы
+
+    def go_to_base_url(self):
+        self.driver.get(self.main_page_url)
+        time.sleep(10)
