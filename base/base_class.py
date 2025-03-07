@@ -2,6 +2,7 @@ import datetime
 import os
 
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 BASE_DIR = "/home/alex/VSCodeProjects/tyumen.blizko.ru/"
@@ -20,11 +21,21 @@ class Base:
         print(f"Текущий URL - {current_url}")
         return current_url
 
-    """ Метод получения элемента по локатору """
+    """ Метод получает елемент страницы по локатору """
 
-    def get_element(self, wait_time: int, log_info: str, locator: str):
-        print(log_info)
-        return WebDriverWait(self.driver, wait_time).until(locator)
+    def get_element(self, wait_time, locator):
+        return WebDriverWait(self.driver, wait_time).until(
+            EC.presence_of_element_located(locator),
+            message=f"Элемент {locator} не найден!",
+        )
+
+    """ Метод получает список элементов по локатору """
+
+    def get_elements(self, wait_time, locator):
+        return WebDriverWait(self.driver, wait_time).until(
+            EC.presence_of_all_elements_located(locator),
+            message=f"Элементы {locator} не найден!",
+        )
 
     """ Метод проверки значения текста """
 
